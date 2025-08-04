@@ -14,14 +14,14 @@ const Index = () => {
     {
       src: "https://cdn.poehali.dev/files/c9a2dc2b-eb84-4c52-8831-36aaa671cf71.jpg",
       alt: "Mobile Legends Heroes",
-      title: "Легендарные герои",
-      subtitle: "Выберите своего чемпиона"
+      title: "Испытай свои силы",
+      subtitle: "Покажи мастерство на арене"
     },
     {
       src: "https://cdn.poehali.dev/files/a6f1037a-7590-4f51-801f-0de460779024.jpg", 
       alt: "Mobile Legends Characters",
-      title: "Эпические персонажи",
-      subtitle: "Мастерство и стратегия"
+      title: "Поднимайся выше",
+      subtitle: "Проложи путь через лиги к вершине"
     },
     {
       src: "https://cdn.poehali.dev/files/16734add-3e82-48ef-8bc9-67d274afc3b7.jpg",
@@ -32,8 +32,8 @@ const Index = () => {
     {
       src: "https://cdn.poehali.dev/files/fd0b6d19-a61a-42c0-9e7b-55260646c1b8.jpeg",
       alt: "Esports Player",
-      title: "Профессиональный киберспорт", 
-      subtitle: "Стань чемпионом"
+      title: "Почувствуй драйв",
+      subtitle: "Окунись в киберспортивную атмосферу"
     }
   ];
 
