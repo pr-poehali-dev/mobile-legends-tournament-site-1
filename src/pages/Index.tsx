@@ -86,12 +86,44 @@ const Index = () => {
 
         <section className="relative z-10 py-20">
           <div className="container mx-auto px-4 text-center">
-            <div className="mb-8 animate-slide-up">
-              <img 
-                src="/img/38fd8e1a-3abf-4b90-bc3b-f9e04dcef81d.jpg" 
-                alt="Tournament Banner"
-                className="mx-auto rounded-2xl shadow-2xl shadow-cyber-cyan/20 max-w-4xl w-full"
-              />
+            <div className="mb-12 animate-slide-up">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
+                <div className="relative group overflow-hidden rounded-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/files/c9a2dc2b-eb84-4c52-8831-36aaa671cf71.jpg" 
+                    alt="Mobile Legends Heroes"
+                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-cyan/30"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <div className="relative group overflow-hidden rounded-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/files/a6f1037a-7590-4f51-801f-0de460779024.jpg" 
+                    alt="Mobile Legends Characters"
+                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-purple/30"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <div className="relative group overflow-hidden rounded-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/files/16734add-3e82-48ef-8bc9-67d274afc3b7.jpg" 
+                    alt="Welcome to Community"
+                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-pink/30"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <div className="relative group overflow-hidden rounded-xl">
+                  <img 
+                    src="https://cdn.poehali.dev/files/fd0b6d19-a61a-42c0-9e7b-55260646c1b8.jpeg" 
+                    alt="Esports Player"
+                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-league-legendary-gold/30"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </div>
             </div>
             
             <h2 className="text-6xl md:text-8xl font-['Orbitron'] font-black mb-6 bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink bg-clip-text text-transparent animate-pulse-glow">
