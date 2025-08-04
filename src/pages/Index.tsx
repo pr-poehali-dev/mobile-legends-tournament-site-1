@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -8,6 +8,42 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [selectedLeague, setSelectedLeague] = useState<string>('all');
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+
+  const heroImages = [
+    {
+      src: "https://cdn.poehali.dev/files/c9a2dc2b-eb84-4c52-8831-36aaa671cf71.jpg",
+      alt: "Mobile Legends Heroes",
+      title: "Легендарные герои",
+      subtitle: "Выберите своего чемпиона"
+    },
+    {
+      src: "https://cdn.poehali.dev/files/a6f1037a-7590-4f51-801f-0de460779024.jpg", 
+      alt: "Mobile Legends Characters",
+      title: "Эпические персонажи",
+      subtitle: "Мастерство и стратегия"
+    },
+    {
+      src: "https://cdn.poehali.dev/files/16734add-3e82-48ef-8bc9-67d274afc3b7.jpg",
+      alt: "Welcome to Community", 
+      title: "Добро пожаловать",
+      subtitle: "Присоединяйтесь к сообществу"
+    },
+    {
+      src: "https://cdn.poehali.dev/files/fd0b6d19-a61a-42c0-9e7b-55260646c1b8.jpeg",
+      alt: "Esports Player",
+      title: "Профессиональный киберспорт", 
+      subtitle: "Стань чемпионом"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const matches = [
     {
@@ -87,42 +123,58 @@ const Index = () => {
         <section className="relative z-10 py-20">
           <div className="container mx-auto px-4 text-center">
             <div className="mb-12 animate-slide-up">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto mb-8">
-                <div className="relative group overflow-hidden rounded-xl">
-                  <img 
-                    src="https://cdn.poehali.dev/files/c9a2dc2b-eb84-4c52-8831-36aaa671cf71.jpg" 
-                    alt="Mobile Legends Heroes"
-                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-cyan/30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative w-full max-w-6xl mx-auto h-96 rounded-2xl overflow-hidden shadow-2xl shadow-cyber-cyan/20">
+                {heroImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/40 to-transparent"></div>
+                    <div className="absolute bottom-8 left-8 text-left">
+                      <h3 className="text-3xl font-['Orbitron'] font-bold text-white mb-2 animate-slide-up">
+                        {image.title}
+                      </h3>
+                      <p className="text-lg text-cyber-cyan animate-slide-up [animation-delay:200ms]">
+                        {image.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                
+                <div className="absolute bottom-4 right-4 flex space-x-2">
+                  {heroImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentSlide 
+                          ? 'bg-cyber-cyan shadow-lg shadow-cyber-cyan/50' 
+                          : 'bg-white/30 hover:bg-white/50'
+                      }`}
+                    />
+                  ))}
                 </div>
                 
-                <div className="relative group overflow-hidden rounded-xl">
-                  <img 
-                    src="https://cdn.poehali.dev/files/a6f1037a-7590-4f51-801f-0de460779024.jpg" 
-                    alt="Mobile Legends Characters"
-                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-purple/30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length)}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-cyber-dark/50 hover:bg-cyber-dark/80 text-white p-2 rounded-full transition-all duration-300 opacity-0 hover:opacity-100 group-hover:opacity-100"
+                >
+                  <Icon name="ChevronLeft" className="h-6 w-6" />
+                </button>
                 
-                <div className="relative group overflow-hidden rounded-xl">
-                  <img 
-                    src="https://cdn.poehali.dev/files/16734add-3e82-48ef-8bc9-67d274afc3b7.jpg" 
-                    alt="Welcome to Community"
-                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-cyber-pink/30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                
-                <div className="relative group overflow-hidden rounded-xl">
-                  <img 
-                    src="https://cdn.poehali.dev/files/fd0b6d19-a61a-42c0-9e7b-55260646c1b8.jpeg" 
-                    alt="Esports Player"
-                    className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-league-legendary-gold/30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                <button
+                  onClick={() => setCurrentSlide((prev) => (prev + 1) % heroImages.length)}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-cyber-dark/50 hover:bg-cyber-dark/80 text-white p-2 rounded-full transition-all duration-300 opacity-0 hover:opacity-100 group-hover:opacity-100"
+                >
+                  <Icon name="ChevronRight" className="h-6 w-6" />
+                </button>
               </div>
             </div>
             
